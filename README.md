@@ -35,7 +35,7 @@ El backend corre en:
 ```cd frontend
     npm install
 ```
-### Ejecutar backend
+### Ejecutar frontend
 `npm run dev`
 
 El frontend corre por defecto en:
