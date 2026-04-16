@@ -186,14 +186,13 @@ El proyecto incluye:
 `VITE_API_URL=http://localhost:3000`
 
 #### Uso en el código
-`const API_URL =
-import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const getVideos = async () => {
-const res = await fetch(`${API_URL}/videos`);
-return res.json();
+  const res = await fetch(`${API_URL}/api/videos`);
+  return res.json();
 };
-`
 
 #### Propósito del fallback
 `http://localhost:3000`
