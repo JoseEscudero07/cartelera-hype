@@ -16,7 +16,7 @@ export const VideoGrid = ({ videos }: Props) => {
 
             {topVideo && <FeaturedVideo video={topVideo} />}
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-3">
                 {restVideos.map((video, index) => (
                     <VideoCard key={index} video={video} />
                 ))}

@@ -30,6 +30,9 @@ export const VideoCard = ({ video }: Props) => {
                 <h3 className="text-sm font-semibold">{video.title}</h3>
                 <p className="text-xs text-gray-400">{video.author}</p>
                 <p className="text-xs text-gray-500">{video.publishedAt}</p>
+                <p className="text-purple-400 text-xs">
+                    Hype: {video.hypeLevel.toFixed(2)}
+                </p>
             </div>
         </div>
     );
