@@ -17,8 +17,8 @@ export const Home = () => {
 
     if (error) {
         return (
-            <div className="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
-                <span className="font-medium">error alert!</span>{error}
+            <div className="p-4 mb-4 text-sm" >
+                <span className="font-medium ml-2">error alert!</span> {error}
             </div>
         )
     }

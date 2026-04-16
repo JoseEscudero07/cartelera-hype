@@ -3,9 +3,10 @@ import type { Video } from "../types/video";
 
 export const getVideos = async (): Promise<Video[]> => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const BASE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     
-    const res = await fetch("http://localhost:3000/api/videos");
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const res = await fetch(`${BASE_API_URL}/api/videos`);
     if (!res.ok) {
       throw new Error(`HTTP error: ${res.status}`);
     }

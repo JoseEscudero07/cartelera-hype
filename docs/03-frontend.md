@@ -172,3 +172,37 @@ Ejemplo:
 * Centraliza funcionalidades comunes
 * Facilita integración futura con herramientas externas
 * Mejora la trazabilidad en desarrollo
+
+
+### Variables de entorno en el frontend (Vite)
+El frontend fue configurado utilizando variables de entorno para manejar configuraciones externas como la URL del backend, evitando valores hardcodeados dentro del código fuente.
+
+#### Archivos de configuración
+El proyecto incluye:
+* `.env.example` → plantilla con las variables necesarias
+* `.env` → archivo local con valores reales (no se sube al repositorio) por el .gitignore
+
+#### Ejemplo de .env.example
+`VITE_API_URL=http://localhost:3000`
+
+#### Uso en el código
+`const API_URL =
+import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+export const getVideos = async () => {
+const res = await fetch(`${API_URL}/videos`);
+return res.json();
+};
+`
+
+#### Propósito del fallback
+`http://localhost:3000`
+Esto permite que la aplicación funcione incluso si no existe archivo .env.
+
+#### Justificación
+* Evita hardcoding de URLs del backend
+* Permite cambiar entornos sin modificar código
+* Facilita despliegues en producción (Vercel, Netlify, etc.)
+* Mejora la colaboración en equipo
+* Define contrato claro mediante .env.example
+

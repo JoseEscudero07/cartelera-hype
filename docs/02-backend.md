@@ -175,3 +175,36 @@ Cada video pasa por un proceso de normalización:
 
 #### Ordenamiento
 Los videos se ordenan de forma descendente según su hypeLevel, asegurando que los más relevantes aparezcan primero.
+
+### Testing del módulo videos
+
+El módulo videos cuenta con pruebas unitarias implementadas utilizando Jest dentro del ecosistema de NestJS, con el objetivo de validar la lógica de negocio y garantizar la consistencia del comportamiento del servicio.
+
+#### Ubicación de los tests
+ * `src/videos/services/videos.service.spec.ts`
+
+Siguiendo la convención de NestJS, los archivos de prueba se ubican junto al servicio que validan, utilizando el sufijo .spec.ts.
+
+#### Alcance de las pruebas
+
+Se implementaron dos pruebas principales:
+
+1. Validación del endpoint lógico getVideos()
+Se verifica que:
+
+* El método retorne datos definidos
+* El resultado no esté vacío
+* Los videos estén correctamente ordenados por hypeLevel en orden descendente
+
+2. Validación de la lógica de negocio calculateHype()
+
+Se valida el cálculo del Hype Level, el cual sigue la fórmula:
+
+`hype = (likes + comments) / views`
+
+#### Reglas adicionales:
+
+* Si el título contiene la palabra "tutorial" (case-insensitive), el hype se multiplica por 2
+* Si un video no tiene comentarios, el hype es automáticamente 0
+
+Esta prueba asegura que las reglas de negocio se apliquen correctamente sin depender de la capa de presentación.
