@@ -21,7 +21,7 @@ Esta decisión permite centralizar todo el proyecto en un único repositorio, fa
 ## Configuración de puertos
 Se configuraron puertos distintos para evitar conflictos al ejecutar ambos servicios simultáneamente:
 Backend http://localhost:3000
-Frontend http://localhost:3001
+Frontend http://localhost:5173
 
 ##  Comunicación entre servicios
 El frontend consumirá los datos desde el backend a través del siguiente endpoint:

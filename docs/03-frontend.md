@@ -78,4 +78,97 @@ src/
 * Permite reutilización mediante el módulo shared
 
 ---
+### Consumo de API y capa de servicios
 
+Se implementó una capa de servicios encargada de la comunicación con el backend.
+
+#### Archivo principal:
+`features/videos/services/videos.service.ts`
+
+#### Responsabilidades
+* Realizar la petición HTTP al backend (/api/videos)
+* Manejar errores de red
+* Centralizar la lógica de acceso a datos
+
+#### Justificación
+* Separación entre lógica de datos y presentación
+* Facilita el mantenimiento y cambios futuros en la API
+* Permite reutilización en diferentes componentes
+
+### Manejo de estado con Custom Hook
+
+Se implementó el hook personalizado useVideos para gestionar el estado de los datos.
+
+#### Estados manejados
+* videos: lista de videos obtenidos
+* loading: indica si la petición está en curso
+* error: captura errores en la solicitud
+
+#### Justificación
+* Encapsula la lógica de obtención de datos
+* Evita duplicación de lógica en componentes
+* Mejora la legibilidad y organización del código
+
+
+### Manejo de estados de carga y error
+
+Se implementó control explícito de estados de carga y error en la interfaz.
+
+#### Comportamiento
+* Durante la carga → se muestra un mensaje de loading
+* En caso de error → se muestra un mensaje controlado al usuario
+* En caso exitoso → se renderiza la información
+
+### Justificación
+* Mejora la experiencia de usuario
+* Evita pantallas en blanco
+* Permite manejar fallos de red de forma controlada
+
+
+### Manejo de errores en imágenes
+Se implementó una validación en la carga de imágenes mediante el evento onError de React.
+
+#### Comportamiento
+* Si la imagen carga correctamente → se renderiza normalmente
+* Si la imagen falla → se muestra un contenedor alternativo
+
+#### Justificación
+* Evita layouts rotos por imágenes inválidas
+* Mejora la robustez de la interfaz
+* Mantiene consistencia visual
+
+
+### Video destacado (“La Joya de la Corona”)
+Se implementó un componente especial para resaltar el video con mayor hypeLevel.
+
+#### Implementación
+* El backend entrega los videos ordenados por relevancia
+* El frontend selecciona el primer elemento como destacado
+* Se renderiza mediante un componente independiente (FeaturedVideo)
+
+#### Justificación
+* Mejora la jerarquía visual
+* Destaca el contenido más relevante
+* Permite escalabilidad en la presentación (cambios futuros sin afectar el resto del sistema)
+
+### Validación de orden en frontend
+Aunque el backend entrega los datos ordenados, el frontend realiza una validación adicional.
+
+#### Implementación
+Se aplica un ordenamiento por hypeLevel antes de renderizar
+
+#### Justificación
+* Evita depender completamente del backend
+* Asegura consistencia en la UI
+* Protege ante posibles cambios o errores en el servicio
+
+### Uso de utilidades compartidas
+Se implementaron utilidades reutilizables en el módulo shared.
+
+Ejemplo:
+* logger
+
+#### Justificación
+* Centraliza funcionalidades comunes
+* Facilita integración futura con herramientas externas
+* Mejora la trazabilidad en desarrollo
